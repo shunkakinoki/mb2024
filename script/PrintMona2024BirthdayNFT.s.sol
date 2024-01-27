@@ -5,6 +5,11 @@ import {console} from "forge-std/console.sol";
 import {Script} from "forge-std/Script.sol";
 import {Mona2024BirthdayNFT} from "../src/Mona2024BirthdayNFT.sol";
 
+/// Adopted from: https://github.com/fiveoutofnine/adopt-a-hyphen/blob/52b5730d5043d8e0afbf8adc2f69cc0700ad7e4a/script/PrintAdoptAHyphenScript.s.sol
+/// License: MIT
+/// Author: fiveoutofnine (thank you again!)
+
+/// @title A script to print the token URI returned by `Mona2024BirthdayNFT` for
 /// @notice A script to print the token URI returned by `Mona2024BirthdayNFT` for
 /// testing purposes.
 contract PrintMona2024BirthdayNFTScript is Script {
