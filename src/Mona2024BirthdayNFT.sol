@@ -11,7 +11,7 @@ contract Mona2024BirthdayNFT is ERC721 {
     }
 
     function symbol() public view virtual override returns (string memory) {
-        return "2024";
+        return "MB2024";
     }
 
     function tokenURI(uint256 id) public view virtual override returns (string memory) {
