@@ -5,6 +5,12 @@ pragma solidity ^0.8.24;
 
 import {ERC721} from "@/solady/tokens/ERC721.sol";
 
+/// @title Mona 2024 Birthday NFT
+/// @author Shun Kakinoki
+/// @author fiveoutofnine (Did mostly all of the heavy lifting)
+/// @dev Mona 2024 Birthday NFT
+/// @notice This contract is an ERC721 contract that mints a token with id 0 to the address of Mona.
+/// @notice This contract also has a function to receive funds and a function to withdraw funds.
 contract Mona2024BirthdayNFT is ERC721 {
     // -------------------------------------------------------------------------
     // Immutable
@@ -70,14 +76,21 @@ contract Mona2024BirthdayNFT is ERC721 {
     /// @dev Withdraws funds from the contract
     /// @notice This function withdraws funds from the contract.
     function withdraw(uint256 amount) public {
+        /// @dev Throws if the caller is not Mona
+        /// @notice This function throws if the caller is not Mona.
         if (ownerOf(0) != msg.sender) {
             revert NotMona();
         }
 
+        /// @dev Throws if the balance of the contract is insufficient
+        /// @notice This function throws if the balance of the contract is insufficient.
+        /// @notice The target amount is 3 ether.
         if (address(this).balance < amount) {
             revert InsufficientFunds(amount, address(this).balance);
         }
 
+        /// @dev Transfers the funds to Mona
+        /// @notice This function transfers the funds to Mona.
         payable(msg.sender).call{value: amount}("");
     }
 }
