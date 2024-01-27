@@ -114,9 +114,9 @@ contract Mona2024BirthdayNFT is ERC721 {
                         NFT_NAME,
                         '","description":"',
                         COLLECTION_DESCRIPTION,
-                        '","image_data":',
+                        '","image_data":"',
                         ON_CHAIN_SVG,
-                        "}"
+                        '"}'
                     )
                 )
             );
