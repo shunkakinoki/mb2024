@@ -8,6 +8,9 @@ import {ERC721} from "@/solady/tokens/ERC721.sol";
 contract Mona2024BirthdayNFT is ERC721 {
     address immutable public MONA_ADDRESS = address(0x2aF8DDAb77A7c90a38CF26F29763365D0028cfEf);
 
+    error NotMona();
+    error InsufficientFunds(uint256 requested, uint256 available);
+
     constructor() {
         _mint(address(MONA_ADDRESS), 0);
     }
@@ -27,8 +30,13 @@ contract Mona2024BirthdayNFT is ERC721 {
     }
 
     function withdraw(uint256 amount) public {
-        require(ownerOf(0) == msg.sender, "Only the owner of the NFT can withdraw");
-        require(address(this).balance >= amount, "Not enough funds");
+        if (ownerOf(0) != msg.sender) {
+            revert NotMona();
+        }
+
+        if (address(this).balance < amount) {
+            revert InsufficientFunds(amount, address(this).balance);
+        }
 
         payable(msg.sender).call{value: amount}("");
     }
