@@ -20,9 +20,16 @@ contract Mona2024BirthdayNFT is ERC721 {
     /// @notice Description of the collection.
     /// @notice This description is used in the metadata of the token.
     string constant COLLECTION_DESCRIPTION =
-        unicode"Celebrating three epic years with Mona, an icon of innovation and imagination.\n"
-        unicode"As we mark 2024, we reflect on her remarkable journey filled with endeavors that inspire us all.\n"
-        unicode"Here's to Mona, to her   may her creative spirit continue to shape our future. Happy Birthday!";
+        unicode"Celebrating three years with Mona, which has brought me so much"
+        unicode" joy and courage. As we mark 2024, we reflect on her loving per"
+        unicode"sonality and kindness, as well as her commitment to her craft -"
+        unicode" which has continued to inspire me everyday. This NFT represent"
+        unicode"s her creative spirit, [志] / (こころざし), which is a Japanese w"
+        unicode"ord that means 'will' or 'intention', expressing her spirit to "
+        unicode"possess a childlike sense of ingenuity and curiosity, that tend"
+        unicode"s to be lost as we grow older. This NFT is a tribute to Mona, a"
+        unicode"s a token of celebration of her 2024 birthday. Truly, Happy Bir"
+        unicode"thday Mona!";
 
     /// @dev The encoded SVG of the token.
     /// @notice The encoded SVG of the token.
