@@ -1,9 +1,9 @@
 import base64
 
-FONT = "NotoSansJP-Subset"
+FONT = "ZenOldMincho-Bold"
 
 with open(f"{FONT}.txt", "w") as output_file:
-    with open(f"{FONT}.woff2", "rb") as input_file:
+    with open(f"{FONT}.woff", "rb") as input_file:
         output_file.write(
             f"data:font/woff2;utf-8;base64,{base64.b64encode(input_file.read()).decode('utf-8')}"
         )
