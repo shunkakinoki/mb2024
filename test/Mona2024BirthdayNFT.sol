@@ -69,6 +69,14 @@ contract Mona2024BirthdayNFTTest is Test {
         // Deposit 1 Ether
         nft.deposit{value: 1 ether}();
 
+        // Check that the withdrawal fails before the target date
+        vm.expectRevert();
+        vm.prank(address(0x2aF8DDAb77A7c90a38CF26F29763365D0028cfEf));
+        nft.withdraw(1 ether);
+
+        // Warp to the target date
+        vm.warp(1724495062);
+
         // Prank Mona's address to make Mona appear as the transaction sender, then withdraw 1 Ether
         vm.prank(address(0x2aF8DDAb77A7c90a38CF26F29763365D0028cfEf));
         nft.withdraw(1 ether);

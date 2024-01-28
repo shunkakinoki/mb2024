@@ -117,6 +117,11 @@ contract Mona2024BirthdayNFT is ERC721 {
     /// @notice This address is the owner of the token id 0.
     address immutable public MONA_ADDRESS = address(0x2aF8DDAb77A7c90a38CF26F29763365D0028cfEf);
 
+    /// @dev Target timestamp for withdrawal
+    /// @notice This timestamp is used to determine whether to withdraw funds.
+    /// @notice The timestamp in uint256 for 2024-08-24T10:24:22+00:00
+    uint256 immutable public TARGET_TIMESTAMP = 1724495062;
+
     // -------------------------------------------------------------------------
     // Error
     // -------------------------------------------------------------------------
@@ -132,6 +137,9 @@ contract Mona2024BirthdayNFT is ERC721 {
     /// @dev Failure to withdraw funds
     /// @notice This error is thrown when the withdrawal of funds fails.
     error WithdrawalFailed();
+    /// @dev Error thrown when the timestamp is before the target timestamp
+    /// @notice This error is thrown when the timestamp is before the target timestamp.
+    error BeforeTargetTimestamp(uint256 timestamp, uint256 targetTimestamp);
 
     // -------------------------------------------------------------------------
     // Constructor
@@ -207,6 +215,11 @@ contract Mona2024BirthdayNFT is ERC721 {
         // Throws if the caller is not Mona
         if (ownerOf(0) != msg.sender) {
             revert NotMona();
+        }
+
+        // Throws if the timestamp is before the target timestamp
+        if (block.timestamp < TARGET_TIMESTAMP) {
+            revert BeforeTargetTimestamp(block.timestamp, TARGET_TIMESTAMP);
         }
 
         // Throws if the balance of the contract is insufficient
