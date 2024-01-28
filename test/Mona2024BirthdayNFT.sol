@@ -89,6 +89,9 @@ contract Mona2024BirthdayNFTTest is Test {
     }
 
     function testMultipleDepositsAndCumulativeWithdrawals() public {
+        // Warp to the target date
+        vm.warp(1724495062);
+        
         // Deposit 1 Ether three times
         nft.deposit{value: 1 ether}();
         nft.deposit{value: 1 ether}();

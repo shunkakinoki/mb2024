@@ -5,6 +5,7 @@ pragma solidity ^0.8.24;
 
 import {Base64} from "@/solady/utils/Base64.sol";
 import {ERC721} from "@/solady/tokens/ERC721.sol";
+import {Mona2024BirthdayNFT} from "../src/Mona2024BirthdayNFT.sol";
 
 /// @title Mona 2024 Birthday NFT
 /// @author Shun Kakinoki(@shunkakinoki)
